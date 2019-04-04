@@ -61,4 +61,4 @@ typings/
 .next
 
 # just until it's sorted
-serverless.yaml
+workers/serverless.yaml
