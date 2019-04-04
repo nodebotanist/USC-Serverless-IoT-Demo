@@ -1,0 +1,24 @@
+service:
+    name: hello-world
+
+provider:
+  name: cloudflare
+  config:
+    accountId: CLOUDFLARE_ACCOUNT_ID
+    zoneId: CLOUDFLARE_ZONE_ID
+
+plugins:
+  - serverless-cloudflare-workers
+
+functions:
+  get-hues:
+    name: get-hues
+    script: get-hues
+    resources:
+      kv:
+        - variable: HUES
+          namespace: hues
+    events:
+      - http:
+          url: YOUR_DOMAIN/get-hues
+          method: GET
