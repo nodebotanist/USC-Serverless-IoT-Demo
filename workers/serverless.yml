@@ -4,8 +4,8 @@ service:
 provider:
   name: cloudflare
   config:
-    accountId: CLOUDFLARE_ACCOUNT_ID
-    zoneId: CLOUDFLARE_ZONE_ID
+    accountId: ACCOUNT_ID
+    zoneId: ZONE_ID
 
 plugins:
   - serverless-cloudflare-workers
@@ -14,11 +14,24 @@ functions:
   get-hues:
     name: get-hues
     script: get-hues
+    webpack: true
     resources:
       kv:
         - variable: HUES
           namespace: hues
     events:
       - http:
-          url: YOUR_DOMAIN/get-hues
+          url: example.com/get-hues
           method: GET
+  add-hue:
+    name: add-hue
+    script: add-hue
+    webpack: true
+    resources:
+      kv:
+        - variable: HUES
+          namespace: hues
+    events:
+      - http:
+          url: example.com/add-hue
+          method: POST
