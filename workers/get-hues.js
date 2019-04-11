@@ -3,6 +3,6 @@ addEventListener('fetch', event => {
 })
 
 async function fetchAndApply(request) {
-	let hues = await HUES.get('usc-hack')
+	let hues = await HUES.get('colors')
 	return new Response(hues)
 }
